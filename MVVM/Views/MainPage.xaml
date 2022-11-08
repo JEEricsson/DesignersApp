@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DesignApp.MVVM.Views.MainPage"
+             xmlns:model="clr-namespace:DesignApp.MVVM.Models"
+             xmlns:viewmodel="clr-namespace:DesignApp.MVVM.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             Title="MainPage">
+   <Grid RowDefinitions=".10*, .10*,.05*, .75*">
+        <RoundRectangle Grid.RowSpan="2"
+                        StyleClass="TopRectangle"/>
+        <VerticalStackLayout StyleClass="Header">
+            <Label StyleClass="HeaderTitle"
+                   Text="Welcome"/>
+            <Label StyleClass="HeaderSubTitle"
+                   Text="Your name "/>
+
+        </VerticalStackLayout>
+        <Grid Grid.Row="1"
+              Grid.RowSpan="2"
+              StyleClass="BalanceGrid">
+            <RoundRectangle StyleClass="BalanceRectangle" />
+
+            <VerticalStackLayout Spacing="0"
+                                 Margin="10">
+              <Label StyleClass="StrongSubTitle" Text="Designers"></Label>
+
+            </VerticalStackLayout>
+            <Button Grid.Row="2"
+                    StyleClass="CircularButton"
+                    Text="+"
+                    x:Name="AddDesigner"
+                    Clicked="AddDesigner_Clicked"
+                    />
+
+        </Grid>
+
+       <Grid Grid.Row="3"
+             RowDefinitions=".1*, .9*"
+             Margin="0,-60,0,0"
+             >
+            <CollectionView
+                Grid.Row="1"
+                EmptyView="No Data"
+                Margin="10,0,6,0"
+                ItemsSource="{Binding Designers}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="15"
+                                       Orientation="Vertical"
+                                       />
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Label StyleClass="NoDataText"
+                                   Text="No Data found. Add new designer"></Label>
+
+                        </Grid>
+
+                    </DataTemplate>
+
+                </CollectionView.EmptyViewTemplate>
+              
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Frame
+                            Grid.Row="0"
+                            Margin="0,0,0,0"
+                            Padding="0"
+                            BackgroundColor="#21001DED"
+                            CornerRadius="20"
+                            BorderColor="White"
+                            >
+                        <Grid ColumnDefinitions="Auto,*"
+                               Padding="10"
+                              RowDefinitions="*,*,*,*"
+                              HeightRequest="150">
+                            <Label StyleClass="StrongMediumTitle"
+                                   FontSize="25"
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Text="{Binding Name}"/>
+                             <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontAttributes="Italic, Bold"
+                                        Text="{Binding Email}" />
+                             <StackLayout
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Margin="0,-15,0,25"
+                                        Orientation="Horizontal">
+                                        <Image Source="star.png"
+                                               
+                                                />
+                                        <Label Text="{Binding Title}"
+                                               FontAttributes="Bold"/>
+                             </StackLayout>
+                            <Button
+                                        Grid.Row="3"
+                                        Margin="0,0,0,0"
+                                           
+                                        BackgroundColor="DarkBlue"
+                                        CornerRadius="20"
+                                        FontSize="Micro"
+                                        Text="View Profile"
+                                        TextColor="White"
+                                        VerticalOptions="End"/>
+
+                            <Image
+                                        Grid.RowSpan="4"
+                                        Grid.Column="1"
+                                        Margin="0,0,0,-10"
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="End"
+                                        Source="man.jpeg"
+                                        VerticalOptions="End" />
+                                        
+                        </Grid>
+                        </Frame>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+       </Grid>
+
+    </Grid>
+</ContentPage>
+
