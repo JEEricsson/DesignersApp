@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -10,18 +10,14 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
 		<!-- Display name -->
 		<ApplicationTitle>DesignApp</ApplicationTitle>
-
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.designapp</ApplicationId>
 		<ApplicationIdGuid>751c82b6-57cd-40b3-be1f-c5301456fed6</ApplicationIdGuid>
-
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -29,71 +25,55 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
-
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-
 	<ItemGroup>
-	  <None Remove="MVVM\" />
-	  <None Remove="MVVM\Views\" />
-	  <None Remove="MVVM\ViewModels\" />
-	  <None Remove="MVVM\Models\" />
-	  <None Remove="CommunityToolkit.Mvvm" />
-	  <None Remove="sqlite-net-pcl" />
-	  <None Remove="SQLitePCLRaw.provider.dynamic_cdecl" />
-	  <None Remove="Abstractions\" />
-	  <None Remove="Services\" />
-	  <None Remove="Resources\Fonts\LibreFranklin-Regular.ttf" />
-	  <None Remove="Resources\Fonts\Roboto-Black.ttf" />
-	  <None Remove="Resources\Images\man.jpeg" />
-	  <None Remove="Resources\Images\mblDomButtonGrayStar.png" />
-	  <None Remove="SQLiteNetExtensions" />
+		<None Remove="MVVM\" />
+		<None Remove="MVVM\Views\" />
+		<None Remove="MVVM\ViewModels\" />
+		<None Remove="MVVM\Models\" />
+		<None Remove="CommunityToolkit.Mvvm" />
+		<None Remove="sqlite-net-pcl" />
+		<None Remove="SQLitePCLRaw.provider.dynamic_cdecl" />
+		<None Remove="Abstractions\" />
+		<None Remove="Services\" />
+		<None Remove="Resources\Fonts\LibreFranklin-Regular.ttf" />
+		<None Remove="Resources\Fonts\Roboto-Black.ttf" />
+		<None Remove="Resources\Images\man.jpeg" />
+		<None Remove="Resources\Images\mblDomButtonGrayStar.png" />
+		<None Remove="SQLiteNetExtensions" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="MVVM\" />
-	  <Folder Include="MVVM\Views\" />
-	  <Folder Include="MVVM\ViewModels\" />
-	  <Folder Include="MVVM\Models\" />
-	  <Folder Include="Abstractions\" />
-	  <Folder Include="Services\" />
+		<Folder Include="MVVM\" />
+		<Folder Include="MVVM\Views\" />
+		<Folder Include="MVVM\ViewModels\" />
+		<Folder Include="MVVM\Models\" />
+		<Folder Include="Abstractions\" />
+		<Folder Include="Services\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.2" />
-	  <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.2" />
+		<PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Remove="Resources\Styles\AppStyle.xaml" />
+		<MauiXaml Remove="Resources\Styles\AppStyle.xaml" />
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiXaml Update="MVVM\Views\MainPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\AddDesignerPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="MVVM\Views\DesignerDetailPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	</ItemGroup>
-	<ItemGroup>
-	  <BundleResource Include="Resources\Styles\AppStyles.xaml" />
-	  <BundleResource Include="Resources\Fonts\LibreFranklin-Regular.ttf" />
-	  <BundleResource Include="Resources\Fonts\Roboto-Black.ttf" />
-	  <BundleResource Include="Resources\Images\man.jpeg" />
-	  <BundleResource Include="Resources\Images\star.png" />
+		<BundleResource Include="Resources\Styles\AppStyles.xaml" />
+		<BundleResource Include="Resources\Fonts\LibreFranklin-Regular.ttf" />
+		<BundleResource Include="Resources\Fonts\Roboto-Black.ttf" />
+		<BundleResource Include="Resources\Images\man.jpeg" />
+		<BundleResource Include="Resources\Images\star.png" />
 	</ItemGroup>
 </Project>
