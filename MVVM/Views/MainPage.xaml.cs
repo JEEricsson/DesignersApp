@@ -5,7 +5,8 @@ namespace DesignApp.MVVM.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+
+    public MainPage(MainPageViewModel mainPageViewModel)
     {
         InitializeComponent();
 

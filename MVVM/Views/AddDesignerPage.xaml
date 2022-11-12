@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DesignApp.MVVM.Views.AddDesignerPage"
+             xmlns:viewmodel="clr-namespace:DesignApp.MVVM.ViewModels"
              NavigationPage.HasNavigationBar="False"
              Title="AddDesignerPage">
 
@@ -41,7 +42,8 @@
 
                 </Frame>
 
-                <Button StyleClass="MarginT15" Text="Save" x:Name="Save" Clicked="Save_Clicked"/>
+                
+                <Button StyleClass="MarginT15" Text="Save" x:Name="Command" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AddDesignerViewModel}}, Path=SaveCommand}"/>
                 <Button StyleClass="MarginT15, RedControl" Text="Cancel" x:Name="Cancel" Clicked="Cancel_Clicked"/>
             </VerticalStackLayout>
 

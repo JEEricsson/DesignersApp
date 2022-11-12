@@ -24,10 +24,13 @@ public static class MauiProgram
         builder.Services.AddSingleton<BaseService<Order>>();
 
         builder.Services.AddSingleton<BaseViewModel>();
-        builder.Services.AddSingleton<AddDesignerViewModel>();
+        builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddTransient<AddDesignerViewModel>();
+        builder.Services.AddTransient<DesignerDetailPageViewModel>();
 
         builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<AddDesignerPage>();
+        builder.Services.AddTransient<AddDesignerPage>();
+        builder.Services.AddTransient<DesignerDetailPage>();
 
         return builder.Build();
     }

@@ -10,13 +10,17 @@ namespace DesignApp.MVVM.ViewModels
         public Designer Designer { get; set; } = new Designer();
 
 
-        public string SaveDesigner()
+
+
+        [RelayCommand]
+        async Task Save()
         {
-
             App.DesignerService.SaveItem(Designer);
-            return App.DesignerService.StatusMessage;
-
+            await Shell.Current.DisplayAlert("Info", App.DesignerService.StatusMessage, "OK");
+            await Shell.Current.Navigation.PopToRootAsync();
         }
+
+
 
     }
 

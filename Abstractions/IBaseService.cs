@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DesignApp.Abstractions
 {
-    public interface IBaseService<T> : IDisposable where T : BaseModel, new()
+    public partial interface IBaseService<T> : IDisposable where T : BaseModel, new()
     {
         void SaveItem(T item);
         T GetItem(int id);

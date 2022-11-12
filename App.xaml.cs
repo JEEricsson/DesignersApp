@@ -14,7 +14,7 @@ public partial class App : Application
         InitializeComponent();
         DesignerService = _designerService;
         OrderService = _orderService;
-        MainPage = new NavigationPage(new MainPage());
+        MainPage = new AppShell();
     }
 }
 

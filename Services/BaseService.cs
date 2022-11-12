@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq.Expressions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using DesignApp.Abstractions;
 using SQLite;
 
 namespace DesignApp.Services
 {
-    public class BaseService<T> : IBaseService<T> where T : BaseModel, new()
+
+    public partial class BaseService<T> : IBaseService<T> where T : BaseModel, new()
     {
 
         SQLiteConnection connection;

@@ -4,6 +4,7 @@
              x:Class="DesignApp.MVVM.Views.MainPage"
              xmlns:model="clr-namespace:DesignApp.MVVM.Models"
              xmlns:viewmodel="clr-namespace:DesignApp.MVVM.ViewModels"
+             x:DataType="viewmodel:MainPageViewModel"
              NavigationPage.HasNavigationBar="False"
              Title="MainPage">
    <Grid RowDefinitions=".10*, .10*,.05*, .75*">
@@ -30,7 +31,8 @@
                     StyleClass="CircularButton"
                     Text="+"
                     x:Name="AddDesigner"
-                    Clicked="AddDesigner_Clicked"
+                    Command="{Binding AddDesignerCommand}"
+                    
                     />
 
         </Grid>
@@ -43,7 +45,7 @@
                 Grid.Row="1"
                 EmptyView="No Data"
                 Margin="10,0,6,0"
-                ItemsSource="{Binding Designers}">
+                ItemsSource="{Binding Designers}" SelectionMode="None">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="15"
                                        Orientation="Vertical"
@@ -62,7 +64,7 @@
                 </CollectionView.EmptyViewTemplate>
               
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="model:Designer">
 
                         <Frame
                             Grid.Row="0"
@@ -72,6 +74,7 @@
                             CornerRadius="20"
                             BorderColor="White"
                             >
+                           
                         <Grid ColumnDefinitions="Auto,*"
                                Padding="10"
                               RowDefinitions="*,*,*,*"
@@ -99,8 +102,9 @@
                              </StackLayout>
                             <Button
                                         Grid.Row="3"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=GoToDetailPageCommand}"
+                                        CommandParameter="{Binding .}"
                                         Margin="0,0,0,0"
-                                           
                                         BackgroundColor="DarkBlue"
                                         CornerRadius="20"
                                         FontSize="Micro"
@@ -124,9 +128,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-
+           
        </Grid>
-
+       
     </Grid>
 </ContentPage>
 
